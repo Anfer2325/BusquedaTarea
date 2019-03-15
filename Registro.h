@@ -35,3 +35,4 @@ int cantidad_registros(const char *);
 void imprimir_registros(int, int);
 
 void busquedaBinaria(const char *,int );
+void busquedaLineal(const char *, int);

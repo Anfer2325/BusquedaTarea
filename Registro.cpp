@@ -79,3 +79,27 @@ void busquedaBinaria(const char * entrada,int id)
 	return;
 
 }
+
+void busquedaLineal(const char * entrada, int id)
+{
+	int max = cantidad_registros(entrada);
+	int it = 0;
+	while (it < max)
+	{
+		ifstream archivo("datab.dat", ios::in | ios::binary);
+		archivo.seekg(it * sizeof(registro), ios::beg);
+		registro regis;
+		archivo.read(reinterpret_cast<char *>(&regis), sizeof(registro));
+		if (regis.id == id)
+		{
+			cout << "Registro: {" << " Code: " << regis.id << " Name: " << regis.name << " LastName: " << regis.lastname << " Date: " << regis.date << " }\n";
+
+			archivo.close();
+			return;
+		}
+		else 
+		{
+			it++;
+		}
+	}
+}
